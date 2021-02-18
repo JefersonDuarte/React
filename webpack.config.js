@@ -2,9 +2,11 @@
 
 const path = require('path')
 const webpack = require('webpack')
+const validate = require('webpack-validator')
 
 module.exports = validate({
   devtool: 'source-map',
+
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3000',
@@ -29,10 +31,10 @@ module.exports = validate({
       include: /src/,
       loader: 'standard'
     }],
-    
+
     loaders: [{
       test: /\.js$/,
-      exlcude: /node_modules/,
+      exclude: /node_modules/,
       include: /src/,
       loader: 'babel'
     }]
