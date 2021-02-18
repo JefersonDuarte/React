@@ -3,7 +3,7 @@
 const path = require('path')
 const webpack = require('webpack')
 
-module.exports = {
+module.exports = validate({
   devtool: 'source-map',
   entry: [
     'react-hot-loader/patch',
@@ -23,6 +23,13 @@ module.exports = {
   ],
 
   module: {
+    preLoaders: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      include: /src/,
+      loader: 'standard'
+    }],
+    
     loaders: [{
       test: /\.js$/,
       exlcude: /node_modules/,
@@ -30,4 +37,4 @@ module.exports = {
       loader: 'babel'
     }]
   }
-}
+})
